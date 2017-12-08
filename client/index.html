@@ -4,9 +4,12 @@
     <meta charset="utf-8">
     <title>chatterbox</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <!-- dependencies -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
     <script>
       // YOU DO NOT NEED TO EDIT THIS CODE
       if (!/(&|\?)username=/.test(window.location.search)) {
@@ -25,8 +28,16 @@
   <body>
     <div id="main">
       <h1>chatterbox</h1>
-      <!-- Your HTML goes here! -->
+      <p>Room <select></select></p>
+      <form action = '#' method = '#'>
+        <input type='text' name='chatText'>
+        <input type = 'submit' value = 'Submit'>
+        </form>
     </div>
-    <div id="chats"></div>
+    <div id="chats">
+
+
+
+    </div>
   </body>
 </html>
