@@ -3,6 +3,12 @@ body {
   text-align: center;
   padding: 0 25px;
   font-family: Questrial, sans-serif;
+  overflow-y: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 #main, #chats {
