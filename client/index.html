@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>chatterbox</title>
+    <title>Chatterbox</title>
     <link rel="stylesheet" href="styles/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
     <!-- dependencies -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
@@ -27,17 +27,19 @@
   </head>
   <body>
     <div id="main">
-      <h1>chatterbox</h1>
-      <p>Room <select></select></p>
-      <form action = '#' method = '#'>
-        <input type='text' name='chatText'>
-        <input type = 'submit' value = 'Submit'>
-        </form>
+      <h1>chatterberts</h1>
+      <br>
+      <!-- Your HTML goes here! -->
+      <p class="roomLabel"><strong>Join Room:&nbsp;</strong></p>
+      <select class="dropdown" id="roomSelect">
+        
+      </select>
+      <div>
+        <input type="text" id="messageInput" />
+        <button type="button" id="submitButton"><strong>Submit</strong></button>
+      </div>
     </div>
     <div id="chats">
-
-
-
     </div>
   </body>
 </html>
