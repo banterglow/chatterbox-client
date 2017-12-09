@@ -48,7 +48,16 @@ let app = {
       url: app.server + JSON.stringify(app.lastUpdate),
       type: 'GET',
       contentType: 'application/json',
-      success: app.render,
+      success: function(data) {
+        console.log(data);
+        app.lastUpdate.createdAt.$gte.iso = moment().format('YYYY-MM-DDTHH:MM:SS') + '.249Z';
+        for (var i = 0; i < data.results.length; i++) {
+          if (_.escape(data.results[i].roomname) !== 'lobby') {
+            app.renderRoom(_.escape(data.results[i].roomname));
+            app.allChats[_.escape(data.results[i].createdAt)] = data.results[i];
+          }   
+        }
+      },
       error: function (data) {
         // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
         console.error('chatterbox: Failed to receive message', data);
