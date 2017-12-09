@@ -24,19 +24,25 @@ let app = {
     setInterval(app.fetch, 3000); //interval
     // app.addFriend();
   },
-  render: function(data) {
-    console.log(data);
+  render: function(data, selectedRoom) {
+    // console.log(data);
     for (var i = 0; i < data.results.length; i++) {
       var text = _.escape(data.results[i].text);
       var username = _.escape(data.results[i].username);
       var timeStamp = moment(new Date(_.escape(data.results[i].createdAt))).format('LLLL');
       var roomName = _.escape(data.results[i].roomname);
-      $('#chats').append($(`<div class="chatBody ${roomName}"><p><strong>${username}</strong><br>${text}</p><p class="timestamp">${timeStamp}</p></div>`));
+      app.createRoom(roomName);
+      // if (selectedRoom && selectedRoom === roomName) {
+      //   app.clearMessages();
+      //   $('#chats').append($(`<div class="chatBody ${roomName}"><p><strong>${username}</strong></p><p>${text}</p><p class="timestamp">${timeStamp}</p></div>`));
+      // } else {
+      $('#chats').append($(`<div class="chatBody ${roomName}"><p><strong>${username}</strong></p><p>${text}</p><p class="timestamp">${timeStamp}</p></div>`));
+      // }
     }
   },
   fetch: function() {
     // $.get(app.server, updateFeed);
-    console.log(app.server + JSON.stringify(app.lastUpdate));
+    // console.log(app.server + JSON.stringify(app.lastUpdate));
     $.ajax({
       // This is the url you should use to communicate with the parse API server.
       url: app.server + JSON.stringify(app.lastUpdate),
@@ -87,14 +93,19 @@ let app = {
   renderRoom: function(room) {
     $('#roomSelect').append($(`<option value="${room}">${room}</option>`));
   },
-  createRoom: function() {
-    var roomName = $('#newRoomInput').val(); 
-    $('#roomSelect').append($(`<option class="${roomName}" value="${roomName}">${roomName}</option>`));
+  createRoom: function(roomName = $('#newRoomInput').val()) {
+    // var roomName = messageRoom $('#newRoomInput').val();
+    if (!_.has(app.roomList, roomName)) {
+      app.roomList[roomName] = roomName;
+      $('#roomSelect').append($(`<option class="${roomName}" value="${roomName}">${roomName}</option>`));
+    }
+    // $('#roomSelect').append($(`<option class="${roomName}" value="${roomName}">${roomName}</option>`));
     app.enterRoom(roomName);
   },
-  enterRoom: function(roomName) {
-    var selectedRoom = $('#roomSelect').options[$('#roomSelect').roomName].value;
-    $('.roomName').attr('selected', 'selected');
+  enterRoom: function(roomName = $('#roomSelect option:selected').val()) {
+    // var selectedRoom = $('#roomSelect options:selected').options[$('#roomSelect').roomName].value;
+    var selectedRoom = $('#roomSelect option:selected').text();
+    // filter for only that room's messages
   },
   addFriend: function() {
 
@@ -122,6 +133,9 @@ $(document).ready(function() {
   $('#submitButton').on('click', app.submitMessage);
 
   $('#createRoomButton').on('click', app.createRoom);
+  //listener for selection 
+  $('#roomSelect').on('click change', app.enterRoom);
+
   /* slide effect - first append it as hidden, then slide reveal it.
   var temp = '<div class="newli"><div>1</div><div>2</div><div>3</div><div>4</div></div>';
   function runEffect() {
