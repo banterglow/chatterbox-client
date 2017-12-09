@@ -1,11 +1,23 @@
 // YOUR CODE HERE:
 // $(document).ready(function() {
-console.log(moment().format('YYYY-MM-DDTHH:MM:SS.MMMZ'));
+
+//2011-08-21T18:02:52.249Z
+//2017-12-08T17:12:74.1540-08:00 
+
+
+console.log(moment().format('YYYY-MM-DDTHH:MM:SS.msZ'));
 let app = {
   roomList: {},
   friendList: {},
-  server: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages?order=-createdAt',
-  lastUpdate: moment().format('YYYY-MM-DDTHH:MM:SS.MMMZ'),
+  server: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages?order=-createdAt&where=',
+  lastUpdate: {
+    createdAt: {
+      $gte: {
+        __type: 'Date',
+        iso: moment().format('YYYY-MM-DDTHH:MM:SS') + '.249Z'
+      }
+    }
+  },
   init: function() {
     app.fetch();
     setInterval(app.fetch, 3000); //interval
@@ -24,7 +36,7 @@ let app = {
     // $.get(app.server, updateFeed);
     $.ajax({
       // This is the url you should use to communicate with the parse API server.
-      url: app.server + '&where={"createdAt":{"$gte":{"__type":"Date","iso":"' + app.lastUpdate + '"}}',
+      url: app.server + JSON.stringify(app.lastUpdate),
       type: 'GET',
       contentType: 'application/json',
       success: app.render,
