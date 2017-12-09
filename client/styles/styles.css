@@ -48,8 +48,12 @@ body {
   line-height: 13px;
 }
 
+.createRoomLabel, .writeMessageLabel, .roomLabel {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
 .roomLabel {
-  display: inline-block;
   font-size: 20px;
 }
 
@@ -118,6 +122,10 @@ form input[type=text] {
 
 .chat:hover {
   background-color: #ddd;
+}
+
+.timestamp {
+  color: gray;
 }
 
 .spinner {

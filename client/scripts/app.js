@@ -74,6 +74,7 @@ let app = {
     console.log(message);
     $('#messageInput').val('');
     app.renderMessage(message);
+    app.fetch();
   },
   renderMessage: function(message) {
     app.send(JSON.stringify(message));
@@ -85,7 +86,6 @@ let app = {
   },
   renderRoom: function(room) {
     $('#roomSelect').append($(`<option value="${room}">${room}</option>`));
-    
   },
   createRoom: function() {
     var roomName = $('#newRoomInput').val(); 
