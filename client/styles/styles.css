@@ -66,7 +66,7 @@ a {
 .dropdown {
   display: inline-block;
   height: 30px;
-  width: 30%;
+  width: 50%;
   vertical-align: center;
   font-size: 15px;
   font-family: Open Sans;
@@ -140,6 +140,7 @@ form input[type=text] {
 .usernameClass {
   /*display: inline-block;*/
   padding-top: 2.8%;
+  cursor: pointer;
 }
 
 .messageText {
@@ -160,3 +161,5 @@ form input[type=text] {
   color: #fff;
   background-color: #0090da;
 }
+
+

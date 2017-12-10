@@ -37,7 +37,7 @@ let app = {
       var timeElapsed = moment(new Date(_.escape(app.allChats[chat].createdAt))).fromNow();
       var roomName = _.escape(app.allChats[chat].roomname);
       if (roomName === selectedRoom) {
-        $('#chats').append($(`<div class="chatBody ${roomName} ${username}"><div class='usernameClass'><strong>${message.username}</strong></div><p class="messageText">${message.text}</p><p class="timestamp">${timeElapsed}</p></div>`));
+        $('#chats').append($(`<div class="chatBody ${roomName} ${username}"><div class='usernameClass'><strong>${username}</strong></div><p class="messageText">${text}</p><p class="timestamp">${timeElapsed}</p></div>`));
       }
       // $('#chats').append($(`<div class="chatBody ${roomName}"><p><strong>${username}</strong><br>${text}</p><p class="timestamp">${timeStamp}</p></div>`));
     }
@@ -145,9 +145,9 @@ let app = {
   },
   addFriend: function(username) {
     app.friendList[username] = username;
-    $('#chats').css('cursor', 'pointer');
+    // $(`${username}`).css('cursor', 'pointer');
     // $(`.${username}`).addClass('friend');
-    let styleFriend = $(`<style>.${username} { border-color: black; color: #8258FA; }</style>`);
+    let styleFriend = $(`<style>.${username} { background-color: #F2F2F2; }</style>`);
     $('body').append(styleFriend);
   }
 };
