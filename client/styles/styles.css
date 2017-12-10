@@ -79,6 +79,7 @@ input {
   border: 1px solid #BDBDBD;
   border-radius: 3px;
   font-size: 15px;
+  display: inline-block;
 }
 
 button {
@@ -132,6 +133,17 @@ form input[type=text] {
 
 .timestamp {
   color: gray;
+  /*float: right;*/
+  /*display: inline-block;*/
+}
+
+.usernameClass {
+  /*display: inline-block;*/
+  padding-top: 2.8%;
+}
+
+.messageText {
+  margin-top: 5px;
 }
 
 .spinner {
