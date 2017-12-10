@@ -147,7 +147,8 @@ let app = {
     app.friendList[username] = username;
     // $(`${username}`).css('cursor', 'pointer');
     // $(`.${username}`).addClass('friend');
-    let styleFriend = $(`<style>.${username} { background-color: #F2F2F2; }</style>`);
+    let styleFriend = $(`<style>.${username} { background-color: #F2F2F2; color: #8258FA; }</style>`);
+    
     $('body').append(styleFriend);
   }
 };
