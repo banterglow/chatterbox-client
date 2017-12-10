@@ -37,7 +37,7 @@ let app = {
       var timeElapsed = moment(new Date(_.escape(app.allChats[chat].createdAt))).fromNow();
       var roomName = _.escape(app.allChats[chat].roomname);
       if (roomName === selectedRoom) {
-        $('#chats').append($(`<div class="chatBody ${roomName} ${username}"><div class='usernameClass'><strong>${username}</strong></div><p class="messageText">${text}</p><p class="timestamp">${timeElapsed}</p></div>`));
+        $('#chats').append($(`<div class="chatBody ${roomName} ${username}"><div class='usernameClass'><strong>${username}</strong></div><p class="messageText" style="color: black">${text}</p><p class="timestamp">${timeElapsed}</p></div>`));
       }
       // $('#chats').append($(`<div class="chatBody ${roomName}"><p><strong>${username}</strong><br>${text}</p><p class="timestamp">${timeStamp}</p></div>`));
     }
@@ -50,7 +50,7 @@ let app = {
       var timeElapsed = moment(new Date(_.escape(app.currentRoomChats[0].createdAt))).fromNow();
       console.log(`update render ${timeElapsed}`);
       var roomName = _.escape(app.currentRoomChats[0].roomname);
-      $('#chats').prepend($(`<div class="chatBody ${roomName} ${username}"><div class='usernameClass'><strong>${username}</strong></div><p class="messageText">${text}</p><p class="timestamp">${timeElapsed}</p></div>`));
+      $('#chats').prepend($(`<div class="chatBody ${roomName} ${username}"><div class='usernameClass'><strong>${username}</strong></div><p class="messageText" style="color: black">${text}</p><p class="timestamp">${timeElapsed}</p></div>`));
       app.currentRoomChats.shift();
     }
   },
@@ -115,7 +115,7 @@ let app = {
     app.send(JSON.stringify(message));
     //below is just for the spec test
     var timeElapsed = moment(new Date(_.escape(message.createdAt))).fromNow();
-    $('#chats').prepend($(`<div class="chatBody ${message.roomname} ${message.username}"><div class='usernameClass'><strong>${message.username}</strong></div><p class="messageText">${message.text}</p><p class="timestamp">${timeElapsed}</p></div>`));
+    $('#chats').prepend($(`<div class="chatBody ${message.roomname} ${message.username}"><div class='usernameClass'><strong>${message.username}</strong></div><p class="messageText" style="color: black">${message.text}</p><p class="timestamp">${timeElapsed}</p></div>`));
   },
   clearMessages: function() {
     $('#chats').empty();
